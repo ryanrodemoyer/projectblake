@@ -22,7 +22,20 @@
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
-                    <li><a href="@ViewBag.ConsentUrl">JWT Consent</a></li>
+                    @if (ViewBag.IsLoggedIn)
+                    {
+                        <li>
+                            @using (Html.BeginForm("Logout", "Home", FormMethod.Post))
+                            {
+                                <input type="submit" value="Logout" class="btn btn-link navbar-btn" />
+                            }
+                        </li>
+                    }
+                    else
+                    {
+                        <li><a href="@ViewBag.ConsentUrl">JWT Consent</a></li>
+                        <li>@Html.ActionLink("JWT Consent (Redirect)", "Consent", "Home", new { area = "" }, null)</li>
+                    }
                 </ul>
             </div>
         </div>

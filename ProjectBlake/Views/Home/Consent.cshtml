@@ -1,0 +1,12 @@
+﻿<div class="row">
+    <h2>Click the button to link your DocuSign account.</h2>
+    <small>You will be redirected to DocuSign to provide your consent for Project Blake to access your account.</small>
+    
+    <p>&nbsp;</p>
+    @using (Html.BeginForm("ConsentRedirect", "Home", FormMethod.Post))
+    {
+        <div>
+            <input type="submit" value="Redirect me!" class="btn btn-info" />
+        </div>
+    }
+</div>

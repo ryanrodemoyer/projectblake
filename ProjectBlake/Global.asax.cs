@@ -33,7 +33,10 @@ namespace ProjectBlake
             string scopes = ConfigurationManager.AppSettings["scopes"];
             string callback = ConfigurationManager.AppSettings["callback"];
 
+            bool isLoggedIn = Convert.ToBoolean(filterContext.HttpContext.Session["isLoggedIn"]);
+
             filterContext.Controller.ViewBag.ConsentUrl = $"https://{baseUrl}/oauth/auth?response_type=code&scope={scopes}&client_id={integrationId}&redirect_uri={callback}";
+            filterContext.Controller.ViewBag.IsLoggedIn = isLoggedIn;
         }
     }
 }
