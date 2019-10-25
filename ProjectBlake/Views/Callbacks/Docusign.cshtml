@@ -1,0 +1,37 @@
+﻿@using Newtonsoft.Json
+@using Newtonsoft.Json.Linq
+
+@model ProjectBlake.Models.DocusignViewModel
+
+<div class="row">
+    <p>Thank you for consenting.</p>
+
+    <h2>Code</h2>
+    <small>Value of the `code` URL param. Exchange this value for an access token by POSTing to https://{oauthBasePath}/oauth/token.</small>
+    <pre>@Model.Code</pre>
+
+    <h2>Auth Grant Token</h2>
+    <small>The token for which we got when exchanging `code`. This access token is obtainable only if the user logs in and is redirected to our endpoint.</small>
+    <pre>@Model.AuthGrantTokenContent</pre>
+
+    <h2>OAuth User Token Data</h2>
+    <small>We exchanged `code` for an access token and now find out who owns the token.</small>
+    <pre>@Model.UserContent</pre>
+    
+    <h2>Signed JWT we generate</h2>
+    <small>Debug info just to see the JWT we build/craft in code. We can *always* exchange a JWT for an access_token.</small>
+    <pre>@Model.JwtToken</pre>
+
+    <h2>User Access Token Response</h2>
+    <small>Response we get from DS for POSTing the above JWT to https://{oauthBasePath}/oauth/token.</small>
+    <pre>@Model.JwtPostContent</pre>
+
+    @*<h2>Your email address</h2>
+    <small>We use your email address to get your User Id from Docusign.</small>
+    @using (Html.BeginForm("TokenPost", "Home", FormMethod.Post))
+    {
+    <input type="email" id="email" name="email" class="form-control" />
+
+    <input type="submit" value="Submit" />
+    }*@
+</div>
